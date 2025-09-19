@@ -1,0 +1,83 @@
+{
+  "site": "https://nilmamano.com/blog/category/dsa",
+  "items": [
+    {
+      "title": "BCtCI Free Resources",
+      "content": "A comprehensive list of all free resources available from Beyond Cracking the Coding Interview, including chapters, tools, templates, and guides.",
+      "content_type": "podcast_transcript",
+      "source_url": "https://nilmamano.com/blog/bctci-free-resources?category=dsa"
+    },
+    {
+      "title": "BCtCI Chapter: Set & Map Implementations",
+      "content": "Learn how sets & maps are built from scratch, and refine your knowledge of hashing.",
+      "content_type": "blog",
+      "source_url": "https://nilmamano.com/blog/set-and-map-implementations?category=dsa"
+    },
+    {
+      "title": "Top-K Problems: Sorting vs Heaps vs Quickselect",
+      "content": "The different approaches to finding the k smallest/largest elements in an array.",
+      "content_type": "blog",
+      "source_url": "https://nilmamano.com/blog/top-k-problems?category=dsa"
+    },
+    {
+      "title": "Queues in JS interviews",
+      "content": "JS doesn't have built-in queues, which can be an issue if you have to implement a BFS. Here are the workarounds.",
+      "content_type": "podcast_transcript",
+      "source_url": "https://nilmamano.com/blog/js-queues?category=dsa"
+    },
+    {
+      "title": "In Defense of Coding Interviews",
+      "content": "A collection of arguments in favor of coding interviews.",
+      "content_type": "podcast_transcript",
+      "source_url": "https://nilmamano.com/blog/in-defense-of-coding-interviews?category=dsa"
+    },
+    {
+      "title": "Get Binary Search Right Every Time, Explained Without Code",
+      "content": "A binary search recipe that works for every problem, explained without code.",
+      "content_type": "blog",
+      "source_url": "https://nilmamano.com/blog/binary-search?category=dsa"
+    },
+    {
+      "title": "Problem Solving BCtCI Style",
+      "content": "A problem walkthrough using the concepts from Beyond Cracking the Coding Interview.",
+      "content_type": "podcast_transcript",
+      "source_url": "https://nilmamano.com/blog/problem-solving-bctci-style?category=dsa"
+    },
+    {
+      "title": "Heapify Analysis Without Math",
+      "content": "A proof that heapify takes linear time without using complex equations.",
+      "content_type": "blog",
+      "source_url": "https://nilmamano.com/blog/heapify-analysis?category=dsa"
+    },
+    {
+      "title": "Lazy vs Eager Algorithms",
+      "content": "Exploring the tradeoffs between lazy and eager implementations of common algorithms.",
+      "content_type": "blog",
+      "source_url": "https://nilmamano.com/blog/lazy-vs-eager?category=dsa"
+    },
+    {
+      "title": "Actually Implementing Dijkstra's Algorithm",
+      "content": "A comprehensive guide to different implementations of Dijkstra's algorithm, with code.",
+      "content_type": "blog",
+      "source_url": "https://nilmamano.com/blog/implementing-dijkstra?category=dsa"
+    },
+    {
+      "title": "Reachability Problems and DFS",
+      "content": "An extensive list of questions that can be solved with DFS.",
+      "content_type": "blog",
+      "source_url": "https://nilmamano.com/blog/reachability-problems-and-dfs?category=dsa"
+    },
+    {
+      "title": "Breaking Down Dynamic Programming",
+      "content": "A step-by-step guide to understanding and implementing dynamic programming algorithms with practical examples.",
+      "content_type": "blog",
+      "source_url": "https://nilmamano.com/blog/breaking-down-dynamic-programming?category=dsa"
+    },
+    {
+      "title": "Iterative Tree Traversals: A Practical Guide",
+      "content": "A guide to implementing preorder, inorder, and postorder tree traversals iteratively.",
+      "content_type": "blog",
+      "source_url": "https://nilmamano.com/blog/iterativetreetraversal?category=dsa"
+    }
+  ]
+}

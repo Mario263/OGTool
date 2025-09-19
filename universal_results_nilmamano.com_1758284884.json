@@ -1,0 +1,35 @@
+{
+  "site": "https://nilmamano.com/blog/category/dsa",
+  "items": [
+    {
+      "title": "BCtCI Free Resources",
+      "content": "A comprehensive list of all free resources available from Beyond Cracking the Coding Interview, including chapters, tools, templates, and guides.",
+      "content_type": "podcast_transcript",
+      "source_url": "https://nilmamano.com/blog/bctci-free-resources?category=dsa"
+    },
+    {
+      "title": "BCtCI Chapter: Set & Map Implementations",
+      "content": "Learn how sets & maps are built from scratch, and refine your knowledge of hashing.",
+      "content_type": "blog",
+      "source_url": "https://nilmamano.com/blog/set-and-map-implementations?category=dsa"
+    },
+    {
+      "title": "Top-K Problems: Sorting vs Heaps vs Quickselect",
+      "content": "The different approaches to finding the k smallest/largest elements in an array.",
+      "content_type": "blog",
+      "source_url": "https://nilmamano.com/blog/top-k-problems?category=dsa"
+    },
+    {
+      "title": "Queues in JS interviews",
+      "content": "JS doesn't have built-in queues, which can be an issue if you have to implement a BFS. Here are the workarounds.",
+      "content_type": "podcast_transcript",
+      "source_url": "https://nilmamano.com/blog/js-queues?category=dsa"
+    },
+    {
+      "title": "In Defense of Coding Interviews",
+      "content": "A collection of arguments in favor of coding interviews.",
+      "content_type": "podcast_transcript",
+      "source_url": "https://nilmamano.com/blog/in-defense-of-coding-interviews?category=dsa"
+    }
+  ]
+}
