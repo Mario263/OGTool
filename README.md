@@ -9,69 +9,113 @@ A powerful, zero-shot website structure detection and content extraction system.
 - **Platform Recognition**: Built-in detection for Substack, Medium, WordPress, Ghost, and more
 - **Universal Output Format**: Standardized `{site, items[]}` JSON structure
 - **Advanced Bot Evasion**: Popup dismissal, user-agent rotation, realistic headers and delays
-- **Quality Content Extraction**: Proper markdown formatting with headers, paragraphs, and structure
+- **Quality Content Extraction**: Full blog article content (not just summaries)
 - **Hierarchical Structure Analysis**: Intelligently discovers blog posts, articles, and content
 
-## 🚀 Quick Start
+## 🚀 Quick Start Guide
 
-### Installation
+### Step 1: Installation
 
 ```bash
+# Clone the repository
+git clone https://github.com/Mario263/OGTool.git
+cd OGTool
+
 # Install dependencies
 pip install -r requirements_blog.txt
 ```
 
-### Basic Usage
+### Step 2: Basic Command Line Usage
+
+The scraper uses this simple command format:
+```bash
+python hierarchical_scraper.py <URL> <max_additional_pages> <max_articles>
+```
+
+**Parameters:**
+- `<URL>` - The website URL to scrape
+- `<max_additional_pages>` - Number of additional pages to crawl (default: 0)
+- `<max_articles>` - Maximum number of articles to extract (default: 20)
+
+### Step 3: Examples
 
 ```bash
-# Extract content with hierarchical detection
-python hierarchical_scraper.py https://blog.example.com 10
+# Extract 5 articles from a blog
+python hierarchical_scraper.py "https://nilmamano.com/blog/category/dsa" 0 5
 
-# Extract from Substack blog
-python hierarchical_scraper.py https://shreycation.substack.com 5
+# Extract 10 articles from Substack
+python hierarchical_scraper.py "https://shreycation.substack.com" 0 10
+
+# Extract from TechCrunch (3 articles)
+python hierarchical_scraper.py "https://techcrunch.com" 0 3
+
+# Extract from Stripe blog (5 articles)
+python hierarchical_scraper.py "https://blog.stripe.com" 0 5
 ```
 
-### Python Usage
+### Step 4: Understanding the Output
 
-```python
-from hierarchical_scraper import HierarchicalScraper
-
-# Create scraper instance
-scraper = HierarchicalScraper()
-
-# Extract content with universal format
-results = scraper.scrape(url='https://blog.example.com', max_links=10)
-
-# Process standardized results
-print(f"Site: {results['site']}")
-for item in results['items']:
-    print(f"Title: {item['title']}")
-    print(f"Content Type: {item['content_type']}")
-    print(f"Source: {item['source_url']}")
-    print(f"Content: {item['content'][:200]}...")
+The scraper saves results in JSON format with filename pattern:
+```
+universal_results_<domain>_<timestamp>.json
 ```
 
-## 📖 Universal Output Format
-
-Every scraper run produces the same standardized format:
-
+**Output Structure:**
 ```json
 {
-  "site": "https://shreycation.substack.com/archive",
+  "site": "https://example.com",
   "items": [
     {
-      "title": "Snacks: It's not too late for Euro Summer flights",
-      "content": "# Snacks: It's not too late for Euro Summer flights\n\n### Procrastinators rejoice...",
+      "title": "Article Title",
+      "content": "Full article content in markdown format...",
       "content_type": "blog",
-      "source_url": "https://shreycation.substack.com/p/snacks-its-not-too-late-for-euro"
+      "source_url": "https://example.com/article-url"
     }
   ]
 }
 ```
 
+## 📖 Detailed Usage Instructions
+
+### For Blog Content Extraction
+```bash
+# For DSA blog articles (get full content)
+python hierarchical_scraper.py "https://nilmamano.com/blog/category/dsa" 0 10
+
+# The scraper will:
+# ✅ Detect it's a WordPress blog
+# ✅ Extract full article content (not just summaries)
+# ✅ Format content as clean markdown
+# ✅ Save results to universal_results_nilmamano.com_<timestamp>.json
+```
+
+### For Newsletter/Substack Content
+```bash
+# For Substack newsletter
+python hierarchical_scraper.py "https://shreycation.substack.com" 0 8
+
+# The scraper will:
+# ✅ Detect Substack platform (80%+ confidence)
+# ✅ Handle popups and modals automatically
+# ✅ Extract full newsletter content
+# ✅ Maintain proper formatting and structure
+```
+
+### For News/Tech Sites
+```bash
+# For news articles
+python hierarchical_scraper.py "https://techcrunch.com" 0 5
+
+# The scraper will:
+# ✅ Detect WordPress platform
+# ✅ Extract clean article titles
+# ✅ Get article content where available
+# ✅ Classify content types appropriately
+```
+
 ## 🔍 Platform Detection
 
-Automatically detects and optimizes for:
+The scraper automatically detects and optimizes for:
 
 - **Substack** (80-90% confidence detection)
 - **Medium** (Platform-specific selectors)
@@ -81,75 +125,75 @@ Automatically detects and optimizes for:
 
 Detection includes confidence scoring and platform-specific optimizations.
 
-## 🛡️ Bot Evasion Features
+## 🛡️ Advanced Features
 
-- **Popup Dismissal**: Automatically removes modals and overlays
-- **User-Agent Rotation**: Random, realistic browser user agents  
-- **Smart Headers**: Complete browser-like headers (Accept, DNT, Sec-Fetch-*)
-- **Request Delays**: Intelligent delays between requests
-- **Session Management**: Persistent sessions with proper referers
-- **Alternative URLs**: Tries /archive and other patterns when main page fails
-
-## 🎯 Content Quality
-
-- **Proper Markdown**: Headers (#, ##), paragraphs, bold text (**)
-- **Structure Preservation**: Maintains article hierarchy and formatting
+### Full Content Extraction
+- **Blog Articles**: Extracts complete article content, not just summaries
+- **Markdown Formatting**: Proper headers, paragraphs, code blocks
 - **Image Handling**: Includes images with proper markdown syntax
 - **Clean Text**: Removes ads, navigation, and non-content elements
 
-## 🔧 Configuration
+### Bot Evasion
+- **Popup Dismissal**: Automatically removes modals and overlays
+- **User-Agent Rotation**: Random, realistic browser user agents
+- **Smart Headers**: Complete browser-like headers
+- **Request Delays**: Intelligent delays between requests
 
-The scraper automatically adapts but can be customized:
+## 📊 Success Examples
 
-```python
-# Platform detection settings
-platform_info = scraper.platform_detector.detect_platform(soup, url)
-print(f"Detected: {platform_info.platform} (confidence: {platform_info.confidence})")
-
-# Content extraction settings  
-content = scraper._extract_main_page_content(soup)  # Enhanced markdown
+### Example 1: DSA Blog
+```bash
+python hierarchical_scraper.py "https://nilmamano.com/blog/category/dsa" 0 3
 ```
+**Result**: 3 complete technical articles with full content, code examples, and proper formatting
 
-## 📁 Files
+### Example 2: Substack Newsletter
+```bash
+python hierarchical_scraper.py "https://shreycation.substack.com" 0 5
+```
+**Result**: 5 newsletter posts with full content and subscriber-only content where accessible
 
-- `hierarchical_scraper.py` - Main universal scraper with zero-shot detection
-- `requirements_blog.txt` - Required dependencies
-- `universal_results_*.json` - Successful scraping results
+## 🔧 Troubleshooting
+
+### Common Issues
+
+1. **403 Forbidden Error**
+   - Some sites block scraping
+   - The scraper will show: `⚠️ Error fetching URL: 403 Client Error`
+   - Try a different URL or the site's /archive page
+
+2. **Empty Results**
+   - Increase `max_articles` parameter
+   - Try `max_additional_pages > 0` for deeper crawling
+
+3. **Installation Issues**
+   - Make sure Python 3.7+ is installed
+   - Run: `pip install --upgrade pip`
+   - Then: `pip install -r requirements_blog.txt`
+
+### Getting Help
+- Check the generated JSON files for successful extractions
+- Look for `📄 Extracting full content from:` messages in output
+- Verify the URL is accessible in your browser
+
+## 📁 Output Files
+
+- `hierarchical_scraper.py` - Main scraper script
+- `requirements_blog.txt` - Required Python packages
+- `universal_results_*.json` - Scraping results (timestamped)
 - `README.md` - This documentation
-- `LICENSE` - MIT License
-
-## 🎯 Successful Test Results
-
-### shreycation.substack.com
-- ✅ Platform Detection: Substack (80% confidence)
-- ✅ Successfully scraped 8 blog posts
-- ✅ Proper markdown formatting with headers and structure
-- ✅ Advanced bot evasion working (popup dismissal)
-- ✅ Universal output format: `{site, items[]}`
-
-### Content Quality Improvement
-- ✅ **Before**: Wall of text without formatting
-- ✅ **After**: Proper headers (27), paragraphs (62), bold text (6)
-- ✅ **Structure**: 10,000 characters of well-formatted markdown content
 
 ## 🤝 Contributing
 
-This scraper provides zero-shot capability. For enhancements:
-
-1. Add new platform detection patterns
-2. Improve content extraction quality  
-3. Enhance bot evasion techniques
-4. Expand universal output format
+Enhance the scraper by:
+1. Adding new platform detection patterns
+2. Improving content extraction quality
+3. Enhancing bot evasion techniques
+4. Expanding universal output format
 
 ## 📄 License
 
 MIT License - see LICENSE file for details.
-
-## 🙏 Credits
-
-- Built for reliable blog content extraction
-- Focused on bot evasion and clean output
-- Minimal dependencies for maximum reliability
 =======
 # OGTool
 A web scraper that scrapes individual websites - part of a take away test.

@@ -1,0 +1,204 @@
+===============================================================================
+                    UNIVERSAL HIERARCHICAL SCRAPER - USAGE GUIDE
+===============================================================================
+
+OVERVIEW:
+A powerful web scraper that automatically detects website structure and 
+extracts full blog/article content. No configuration needed - just provide 
+a URL and get structured content back.
+
+===============================================================================
+INSTALLATION:
+===============================================================================
+
+1. Clone the repository:
+   git clone https://github.com/Mario263/OGTool.git
+   cd OGTool
+
+2. Install dependencies:
+   pip install -r requirements_blog.txt
+
+===============================================================================
+BASIC USAGE:
+===============================================================================
+
+Command Format:
+python hierarchical_scraper.py <URL> <max_additional_pages> <max_articles>
+
+Parameters:
+- URL: Website to scrape (required)
+- max_additional_pages: Additional pages to crawl (usually 0)
+- max_articles: Maximum articles to extract (default: 20)
+
+===============================================================================
+EXAMPLES:
+===============================================================================
+
+# Extract 5 articles from a technical blog
+python hierarchical_scraper.py "https://nilmamano.com/blog/category/dsa" 0 5
+
+# Extract 10 articles from Substack newsletter
+python hierarchical_scraper.py "https://shreycation.substack.com" 0 10
+
+# Extract 3 articles from TechCrunch
+python hierarchical_scraper.py "https://techcrunch.com" 0 3
+
+# Extract 5 articles from Stripe blog
+python hierarchical_scraper.py "https://blog.stripe.com" 0 5
+
+# Extract from Medium publication
+python hierarchical_scraper.py "https://towardsdatascience.com" 0 7
+
+===============================================================================
+OUTPUT:
+===============================================================================
+
+The scraper creates a JSON file with this naming pattern:
+universal_results_<domain>_<timestamp>.json
+
+Example output structure:
+{
+  "site": "https://example.com",
+  "items": [
+    {
+      "title": "Article Title",
+      "content": "Full article content in markdown format...",
+      "content_type": "blog",
+      "source_url": "https://example.com/article-url"
+    }
+  ]
+}
+
+===============================================================================
+FEATURES:
+===============================================================================
+
+✓ FULL CONTENT EXTRACTION: Gets complete articles, not just summaries
+✓ AUTO PLATFORM DETECTION: Recognizes Substack, WordPress, Medium, Ghost
+✓ BOT EVASION: Handles popups, uses realistic browser headers
+✓ CLEAN FORMATTING: Outputs proper markdown with headers and structure
+✓ UNIVERSAL FORMAT: Same output structure for all websites
+✓ ZERO CONFIGURATION: Just provide URL, scraper does the rest
+
+===============================================================================
+SUPPORTED PLATFORMS:
+===============================================================================
+
+- Substack (newsletters/blogs)
+- WordPress (most blogs and news sites)
+- Medium (publications and personal blogs)
+- Ghost (modern blog platform)
+- Generic blogs (universal fallback)
+- News sites (TechCrunch, etc.)
+- Technical documentation sites
+
+===============================================================================
+WHAT GETS EXTRACTED:
+===============================================================================
+
+For Blog Articles:
+- Complete article content (not just descriptions)
+- Proper markdown formatting with headers
+- Code blocks and technical content
+- Images with proper markdown syntax
+- Author and date information when available
+
+For Other Content:
+- Page titles and descriptions
+- Links and navigation structure
+- Content classification (blog, documentation, etc.)
+
+===============================================================================
+TROUBLESHOOTING:
+===============================================================================
+
+Problem: "403 Forbidden" error
+Solution: Some sites block scraping. Try /archive or /blog URLs
+
+Problem: Empty results
+Solution: Increase max_articles number or try max_additional_pages > 0
+
+Problem: Installation errors
+Solution: Ensure Python 3.7+ is installed, run: pip install --upgrade pip
+
+Problem: Slow extraction
+Solution: Reduce max_articles number for faster results
+
+===============================================================================
+SUCCESS INDICATORS:
+===============================================================================
+
+Look for these messages in the output:
+✓ "🔍 Detected platform: [platform] (confidence: X.XX)"
+✓ "📰 Detected blog listing page with X articles"
+✓ "📄 Extracting full content from: [URL]"
+✓ "✅ Successfully scraped X items!"
+
+===============================================================================
+EXAMPLE SESSION:
+===============================================================================
+
+$ python hierarchical_scraper.py "https://nilmamano.com/blog/category/dsa" 0 3
+
+🧠 Starting hierarchical scrape: https://nilmamano.com/blog/category/dsa
+📊 Max articles limit set to: 3
+🔍 Detected platform: wordpress (confidence: 0.20)
+🔍 Detecting hierarchical structure...
+📰 Detected blog listing page with 3 articles
+📄 Extracting full content from: https://nilmamano.com/blog/...
+
+============================================================
+UNIVERSAL SCRAPER RESULTS:
+============================================================
+{
+  "site": "https://nilmamano.com/blog/category/dsa",
+  "items": [
+    ... (3 complete articles with full content)
+  ]
+}
+
+💾 Results saved to: universal_results_nilmamano.com_1758285289.json
+✅ Successfully scraped 3 items!
+
+===============================================================================
+TIPS FOR BEST RESULTS:
+===============================================================================
+
+1. Start with small numbers (3-5 articles) to test
+2. Use 0 for max_additional_pages unless you need deep crawling
+3. Check the generated JSON file to see extraction quality
+4. For news sites, results may vary based on paywall restrictions
+5. Blog listing pages work better than individual article pages
+6. Some sites work better with /archive, /blog, or /posts URLs
+
+===============================================================================
+FILES CREATED:
+===============================================================================
+
+- universal_results_*.json: Extraction results (timestamped)
+- These contain the actual scraped content in structured format
+
+===============================================================================
+ADVANCED USAGE:
+===============================================================================
+
+# Extract more articles with deeper crawling
+python hierarchical_scraper.py "https://blog.example.com" 2 15
+
+# Quick test with minimal extraction
+python hierarchical_scraper.py "https://example.com" 0 1
+
+# Maximum extraction for comprehensive sites
+python hierarchical_scraper.py "https://docs.example.com" 5 50
+
+===============================================================================
+NEED HELP?
+===============================================================================
+
+1. Check that the URL is accessible in your browser
+2. Verify Python dependencies are installed
+3. Look at existing universal_results_*.json files for examples
+4. Try different URL patterns (/archive, /blog, etc.)
+5. Check GitHub repository: https://github.com/Mario263/OGTool
+
+===============================================================================
